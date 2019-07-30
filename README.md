@@ -87,4 +87,19 @@ ls -la /dev/video*
 ... and edit the config
 
 ## Playback
-open `tcp://jetson-ip-or-name:5100` - replace the name or use the ip and chose a port
+open `tcp://jetson-ip-or-name:5100`  
+replace the name or use the ip and chose a port
+
+## API
+open `http://jetson-ip-or-name:8080/v1` 
+___
+#### `/`
+get the camera options
+___
+#### `/{camera_id}/record`
+save recording on disk
+___
+#### `/{camera_id}/stop`
+stop recording
+___
+
