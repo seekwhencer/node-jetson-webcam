@@ -29,16 +29,62 @@ Exit and reopen the console or source it:
 Create a folder
 ```
 sudo mkdir /data
-sudo chown $USER:$GROUP /data
+sudo chown MYUSER /data
 ```
 
 Get the repo:
 ```
 cd /data
 git clone https://github.com/seekwhencer/node-jetson-webcam.git
+cd node-jetson-webcam
 npm install
 ```
-Run it
+## Run it
 ```
 npm run dev
 ```
+
+## Configure
+Edit the default config in: `config/default.conf`  
+
+```bash
+[global]
+name=My funky webcam controller
+
+[api]
+host=127.0.0.1
+port=8100
+
+[camera]
+device=/dev/video1
+name=default camera
+bin=/usr/bin/gst-launch-1.0
+ffmpeg_bin=/usr/bin/ffmpeg
+width=1920
+height=1080
+framerate=30
+quality=100
+caps_delay=2000
+ready_delay=2000
+mode=tcp
+inputformat=YUY2
+
+[camera_1]
+device=/dev/video0
+name=First Cam
+port=5100
+
+[camera_2]
+device=/dev/video2
+name=Second Cam
+port=5200
+```
+
+check the webcam devices:
+```
+ls -la /dev/video*
+```
+... and edit the config
+
+## Playback
+open `tcp://jetson-ip-or-name:5100` - replace the name or use the ip and chose a port
