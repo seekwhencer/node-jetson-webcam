@@ -10,9 +10,11 @@ Install gstreamer:
 sudo add-apt-repository universe
 sudo add-apt-repository multiverse
 sudo apt-get update
-sudo apt-get install gstreamer1.0-tools gstreamer1.0-alsa gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav
-sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-good1.0-dev libgstreamer-plugins-bad1.0-dev 
-sudo apt-get install libgstrtspserver-1.0-0 libgstrtspserver-1.0-dev
+sudo apt-get install gstreamer1.0-tools gstreamer1.0-alsa gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav -y
+sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-good1.0-dev libgstreamer-plugins-bad1.0-dev -y 
+sudo apt-get install libgstrtspserver-1.0-0 libgstrtspserver-1.0-dev -y
+sudo apt-get install curl make -y
+sudo apt-get upgrade -y
 ```
 
 Install Node
@@ -24,6 +26,11 @@ curl -L https://git.io/n-install | bash
 Exit and reopen the console or source it:
 ```
 . ~/.bashrc
+```
+
+Change node.js version to 12
+```
+n 12
 ```
 
 Create a folder
@@ -94,7 +101,7 @@ replace the name or use the ip and chose a port
 open `http://jetson-ip-or-name:8080/v1` 
 ___
 #### `/`
-get the camera options
+get the camera properties
 ___
 #### `/{camera_id}/record`
 save recording on disk
