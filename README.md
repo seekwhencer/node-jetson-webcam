@@ -94,7 +94,13 @@ ls -la /dev/video*
 ... and edit the config
 
 ## Playback
+Two ways of streaming:
+ 
+1) per tcp directly from gstreamer
+2) per http from icecast2
+
 open `tcp://jetson-ip-or-name:5100`  
+or: `http://jetson-ip-or-name:8100/one`  
 replace the name or use the ip and chose a port
 
 ## API
