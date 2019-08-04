@@ -53,45 +53,39 @@ npm run dev
 
 ## Configure
 Edit the default config in: `config/default.conf`  
-
-```bash
-[global]
-name=My funky webcam controller
-
-[api]
-host=127.0.0.1
-port=8100
-
-[camera]
-device=/dev/video1
-name=default camera
-bin=/usr/bin/gst-launch-1.0
-ffmpeg_bin=/usr/bin/ffmpeg
-width=1920
-height=1080
-framerate=30
-quality=100
-caps_delay=2000
-ready_delay=2000
-mode=tcp
-inputformat=YUY2
-
-[camera_1]
-device=/dev/video0
-name=First Cam
-port=5100
-
-[camera_2]
-device=/dev/video2
-name=Second Cam
-port=5200
-```
-
+ 
+The `[camera]` and the `[camercontrols]` element is the property set of all cameras. `[camera_1]` and `[camera_2]` override things from `[camera]` and `[cameracontrols]`.
+ 
 check the webcam devices:
 ```
 ls -la /dev/video*
 ```
 ... and edit the config
+
+## Steam Configuration
+Edit these config fields for all or a specific camera:
+```ini
+[camera]
+mode=vp8nv
+source=mjpeg
+encoder=vp8
+overlay=clock,name,device
+output=icecast
+```
+
+`mode` is deprecated  
+`source` can be: `mjpg` or `h264` or `raw`  
+`encoder` can be: `vp8` or `h264`  
+`overlay` can be: `clock,name,device` or less of them, comma separated  
+`output` can be: `tcp` or `icecast`  
+
+## Camera Capabilities
+Check if your cam supports the given source properties. At the moment it is:
+```
+mjpeg
+30 fps
+1280 x 720
+```
 
 ## Playback
 Two ways of streaming:
@@ -116,3 +110,9 @@ ___
 stop recording
 ___
 
+## Summary:
+At the moment the Icecast Stream is stable as hell with a latency of a second or less.
+Tested over a 300 MBit/s Wifi Network and played with VLC on a Windows Platform.
+The browser playback in firefox lags a little bit. I don't know why.
+  
+The key for a stable and fluid stream was this f***** properties for the webmmuxer: `min-cluster-duration` and `max-cluster-duration`
