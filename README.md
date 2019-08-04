@@ -36,9 +36,10 @@ n 12
 Create a folder
 ```
 sudo mkdir /data
-sudo chown MYUSER /data
+sudo chown MYUSER:MYUSER /data
 ```
-
+replace `MYUSER` with your own. getting: `echo $USER`
+ 
 Get the repo:
 ```
 cd /data
@@ -116,3 +117,11 @@ Tested over a 300 MBit/s Wifi Network and played with VLC on a Windows Platform.
 The browser playback in firefox lags a little bit. I don't know why.
   
 The key for a stable and fluid stream was this f***** properties for the webmmuxer: `min-cluster-duration` and `max-cluster-duration`
+ 
+Sharpness: with a cheap webcam under 100 € you have a maximum focus range with the lens of the webcam.
+This means you can't focus things far far away. The maximum is somewhere at 5 meters ?
+The normal use case of a webcam is to make a skype call or something. These use cases needs a low focus range.
+ 
+To hack your webcam, open the cam and rotate the lens with a pliers.
+BUT: be careful and make a little mark on the lens ring and the fixed holder to turn it back later.
+That sounds funny? It is.
