@@ -102,13 +102,19 @@ replace the name or use the ip and chose a port
 open `http://jetson-ip-or-name:8080/v1` 
 ___
 #### `/`
-get the camera properties
+get all cameras
 ___
-#### `/{camera_id}/record`
+#### `/camera/{camera_id}`
+get one camera
+___
+#### `/camera/{camera_id}/record`
 save recording on disk
 ___
-#### `/{camera_id}/stop`
+#### `/camera/{camera_id}/stop`
 stop recording
+___
+#### `/camera/{camera_id}/snapshot`
+make a snapshot
 ___
 
 ## Summary:
