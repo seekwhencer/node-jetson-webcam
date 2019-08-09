@@ -150,6 +150,23 @@ You can reach the desktop stream: `http://jetson-ip-or-hostname:8100/desktop` !
   
 `desktop.sh` needs the running node app and the running icecast2 server.
 
+### Autostart with the desktop - or: "the kiosk mode"
+
+- edit, replace MYUSER  
+    ```
+    nano ~/.config/autostart/MYUSER.desktop
+    ```  
+- use this:
+    ```
+    [Desktop Entry]
+    Type=Application
+    Name=Node Jetson Webcam Desktop Stream
+    Exec=gnome-terminal -e /data/node-jetson-webcam/desktop.sh
+    X-GNOME-Autostart-enabled=true
+    ```
+
+Set autologin to your user. Check the user settings....
+
 ## Summary:
 At the moment the Icecast Stream is stable as hell with a latency of a second or less.
 Tested over a 300 MBit/s Wifi Network and played with VLC on a Windows Platform.
