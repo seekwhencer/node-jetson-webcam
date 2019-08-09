@@ -21,8 +21,10 @@ DISPLAY=":1"
 #sleep 1
 
 gst-launch-1.0  -v -e \
- ximagesrc display-name=$DISPLAY startx=0 use-damage=0 ! 'video/x-raw,framerate=30/1' \
- ! nvvidconv ! "video/x-raw(memory:NVMM),format=NV12,width=1920,height=1080,framerate=30/1" \
+ ximagesrc display-name=$DISPLAY startx=0 use-damage=0 ! 'video/x-raw,framerate=50/1' \
+ ! nvvidconv ! "video/x-raw(memory:NVMM),format=NV12,width=1920,height=1080,framerate=50/1" \
  ! nvv4l2vp8enc maxperf-enable=1 preset-level=4 control-rate=0 \
  ! webmmux streamable=1 min-cluster-duration=100000000 max-cluster-duration=500000000 \
  ! shout2send ip=localhost port=8100 password=changeme mount=/desktop async=0
+
+. ./desktop.sh
