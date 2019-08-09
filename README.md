@@ -72,12 +72,10 @@ encoder=vp8
 overlay=clock,name,device
 output=icecast
 ```
-
-`mode` is deprecated  
-`source` can be: `mjpg` or `h264` or `raw`  
-`encoder` can be: `vp8` or `h264`  
-`overlay` can be: `clock,name,device` or less of them, comma separated  
-`output` can be: `tcp` or `icecast`  
+- `source` can be: `mjpg` or `h264` or `raw`  
+- `encoder` can be: `vp8` or `h264`  
+- `overlay` can be: `clock,name,device` or less of them, comma separated  
+- `output` can be: `tcp` or `icecast`  
 
 ## Camera Capabilities
 Check if your cam supports the given source properties. At the moment it is:
@@ -86,6 +84,9 @@ mjpeg
 30 fps
 1280 x 720
 ```
+This is important! If you give wrong capabilities to `width_from`, `height_from`, `framerate_from` or `width`,`height`,`framerate` (if no `_from` property was set).
+Check the capabilities of your cam. `v4l2-ctl --list-formats -d /dev/video0` - replace `video0` with your device.
+
 
 ## Playback
 Two ways of streaming:
@@ -133,6 +134,9 @@ ___
 #### **POST** `/camera/{camera_id}/controls`
 set the camera controls (brightness, contrast etc.)  
 multipart form, any property equals a form field
+___
+#### **POST** `/camera/{camera_id}/controls/reset`
+reset to the defaults from config file
 ___
 
 ## Desktop Streaming
