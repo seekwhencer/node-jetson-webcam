@@ -101,32 +101,50 @@ replace the name or use the ip and chose a port
 open `http://jetson-ip-or-name:8080/v1` 
 ___
 ### All Cameras
-#### `/cameras`
+#### **GET**`/cameras`
 get all cameras
 ___
-#### `/cameras/record`
+#### **GET**`/cameras/record`
 start recording for all cameras
 ___
-#### `/cameras/stop`
+#### **GET**`/cameras/stop`
 stop recording for all cameras
 ___
-#### `/cameras/snapshot`
+#### **GET**`/cameras/snapshot`
 make a snapshot
 ___
 
 ### One Camera
-#### `/camera/{camera_id}`
+#### **GET**`/camera/{camera_id}`
 get one camera
 ___
-#### `/camera/{camera_id}/record`
+#### **GET**`/camera/{camera_id}/record`
 save recording on disk
 ___
-#### `/camera/{camera_id}/stop`
+#### **GET**`/camera/{camera_id}/stop`
 stop recording
 ___
-#### `/camera/{camera_id}/snapshot`
+#### **GET**`/camera/{camera_id}/snapshot`
 make a snapshot
 ___
+#### **GET** `/camera/{camera_id}/controls`
+get the camera controls (brightness, contrast etc.)
+___
+#### **POST** `/camera/{camera_id}/controls`
+set the camera controls (brightness, contrast etc.)  
+multipart form, any property equals a form field
+___
+
+## Desktop Streaming
+It is possible to stream the ubuntu gnome desktop - and, if you let it run: a fullscreen browser.
+I suggest the `chromium browser`. Simply start the desktop, open a shell, go into the app folder
+and run: `./desktop.sh`.  
+  
+`desktop.sh` is actually the simplest way to send the desktop view as stream to the icecast server.
+But you need to run the script from a terminal from open gnome session - not over SSH.
+You can reach the desktop stream: `http://jetson-ip-or-hostname:8100/desktop` !
+  
+`desktop.sh` needs the running node app and the running icecast2 server.
 
 ## Summary:
 At the moment the Icecast Stream is stable as hell with a latency of a second or less.
