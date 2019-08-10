@@ -55,7 +55,7 @@ export DISPLAY
 # shout2send ip=localhost port=8100 password=changeme mount=/desktop async=0
 
 
-TASK=`ps aux | grep Xvfb | grep -v grep |  awk '{print $2}'`
+TASK=`ps aux | grep gst-launch | grep desktop | grep -v grep |  awk '{print $2}'`
 echo $TASK
 kill -9 $TASK
 echo ""
@@ -67,7 +67,7 @@ kill -9 $BROWSER_TASKS
 echo ""
 sleep 1
 
-/usr/bin/chromium-browser --window-size=1920,1080 --kiosk --window-position=0,0 http://localhost:8080 &
+# /usr/bin/chromium-browser --window-size=1920,1080 --kiosk --window-position=0,0 http://localhost:8080 &
 
 gst-launch-1.0  -v -e \
  ximagesrc display-name=$DISPLAY startx=0 use-damage=0 ! 'video/x-raw,framerate=50/1' !  \
