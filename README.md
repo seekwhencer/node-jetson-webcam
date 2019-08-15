@@ -66,7 +66,6 @@ ls -la /dev/video*
 Edit these config fields for all or a specific camera:
 ```ini
 [camera]
-mode=vp8nv
 source=mjpeg
 encoder=vp8
 overlay=clock,name,device
@@ -166,6 +165,38 @@ You can reach the desktop stream: `http://jetson-ip-or-hostname:8100/desktop` !
     ```
 
 Set autologin to your user. Check the user settings....
+
+### Auto start the node app
+- install `pm2` globally
+```
+npm install pm2 -g
+```
+- apply as service
+```
+pm2 startup
+```
+- follow the instructions from pm2 and execute the given commands as sudo
+- let pm2 start the app
+```
+cd /data/node-jetson-webcam
+pm2 start "npm run dev" --name "node-jetson-webcam"
+pm2 save
+```
+- starting, stopping
+```
+pm2 stop 0
+pm2 start 0
+```
+`0` is the pm2 app id.
+- get status
+```
+pm2 status
+pm2 status 0
+```
+- logs
+```
+pm2 logs 0
+```
 
 ## Summary:
 At the moment the Icecast Stream is stable as hell with a latency of a second or less.
