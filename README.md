@@ -4,7 +4,7 @@ With this you can run multiple webcams on a jetson nano dev. simplified.
 
 ## Setup
 
-Install gstreamer:
+- Install gstreamer:
 
 ```
 sudo add-apt-repository universe
@@ -16,30 +16,30 @@ sudo apt-get install curl make htop ffmpeg v4l-utils icecast2 -y
 sudo apt-get upgrade -y
 ```
 
-Install Node
+- Install Node
 
 ```
 curl -L https://git.io/n-install | bash
 ```
 
-Exit and reopen the console or source it:
+- Exit and reopen the console or source it:
 ```
 . ~/.bashrc
 ```
 
-Change node.js version to 12
+- Change node.js version to 12
 ```
 n 12
 ```
 
-Create a folder
+- Create a folder
 ```
 sudo mkdir /data
 sudo chown MYUSER:MYUSER /data
 ```
 replace `MYUSER` with your own. getting: `echo $USER`
  
-Get the repo:
+- Get the repo:
 ```
 cd /data
 git clone https://github.com/seekwhencer/node-jetson-webcam.git

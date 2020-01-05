@@ -2,6 +2,11 @@ export default {
     location: "",
     hostname: "localhost",
     admin: "",
+    'http-headers': [
+        'header name="Access-Control-Allow-Origin" value="*"',
+        'header name="Access-Control-Allow-Headers" value="Origin, Accept, X-Requested-With, Content-Type, If-Modified-Since"',
+        'header name="Access-Control-Allow-Methods" value="GET, OPTIONS, HEAD"'
+    ],
     limits: {
         clients: 100,
         sources: 10,
